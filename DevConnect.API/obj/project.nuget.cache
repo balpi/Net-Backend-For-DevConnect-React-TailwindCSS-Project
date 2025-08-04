@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "JgcxTADg5YRQZOxfmLykTpmVfpaKoQYL6xCJ/cNnOi9e8ejiahf8tBc3OfrZEdIe7EsXAtGJp+QJ3ZitpV+HIA==",
+  "dgSpecHash": "RB/93jMDVraCbXCLRNsng/sMxA+/ie5hWRAE/6rBUpr6PM81cGGbJ32aYPZJlj58Wuv1uoatSl74x02uSxXlBA==",
   "success": true,
   "projectFilePath": "D:\\Portfoyum\\DevConnect\\DevConnectBackend\\DevConnect.API\\DevConnect.API.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\7.0.18\\microsoft.aspnetcore.authentication.jwtbearer.7.0.18.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.aspnetcore.openapi\\7.0.12\\microsoft.aspnetcore.openapi.7.0.12.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.bcl.timeprovider\\8.0.1\\microsoft.bcl.timeprovider.8.0.1.nupkg.sha512",
@@ -27,6 +28,8 @@
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.identitymodel.abstractions\\8.13.0\\microsoft.identitymodel.abstractions.8.13.0.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\8.13.0\\microsoft.identitymodel.jsonwebtokens.8.13.0.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.identitymodel.logging\\8.13.0\\microsoft.identitymodel.logging.8.13.0.nupkg.sha512",
+    "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.35.0\\microsoft.identitymodel.protocols.6.35.0.nupkg.sha512",
+    "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.35.0\\microsoft.identitymodel.protocols.openidconnect.6.35.0.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.identitymodel.tokens\\8.13.0\\microsoft.identitymodel.tokens.8.13.0.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\microsoft.openapi\\1.4.3\\microsoft.openapi.1.4.3.nupkg.sha512",
     "C:\\Users\\SERHAT BEY\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",

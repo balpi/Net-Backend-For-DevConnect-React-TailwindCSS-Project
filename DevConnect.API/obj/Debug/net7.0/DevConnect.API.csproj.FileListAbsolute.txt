@@ -47,3 +47,10 @@ D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Micros
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Microsoft.Extensions.DependencyModel.dll
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Mono.TextTemplating.dll
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\System.CodeDom.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Microsoft.Bcl.TimeProvider.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Microsoft.IdentityModel.Abstractions.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Microsoft.IdentityModel.Logging.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\Microsoft.IdentityModel.Tokens.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.API\bin\Debug\net7.0\System.IdentityModel.Tokens.Jwt.dll

@@ -1,9 +1,29 @@
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
+{
+    var JwtSettings = builder.Configuration.GetSection("JwtSettings");
+    opt.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidIssuer = JwtSettings["Issuer"],
+        ValidateAudience = true,
+        ValidAudience = JwtSettings["Audience"],
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(JwtSettings["key"]))
+
+    };
+});
+
 // Add services to the container.
-builder.Services.AddDbContext<AppContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostGreSql")));
+builder.Services.AddDbContext<DevConnectDbContext>(opt => opt.UseNpgsql(builder.Configuration.GetConnectionString("PostGreSql")));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
