@@ -15,3 +15,5 @@ D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Infrastructure\obj\Debug\ne
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Infrastructure\obj\Debug\net7.0\DevConnect.Infrastructure.pdb
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Infrastructure\obj\Debug\net7.0\DevConnect.Infrastructure.genruntimeconfig.cache
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Infrastructure\obj\Debug\net7.0\ref\DevConnect.Infrastructure.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Infrastructure\bin\Debug\net7.0\DevConnect.Application.dll
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Infrastructure\bin\Debug\net7.0\DevConnect.Application.pdb

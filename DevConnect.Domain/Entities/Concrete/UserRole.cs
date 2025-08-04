@@ -1,5 +1,6 @@
 public class UserRole
 {
+    public int Id { get; set; }
     public int UserCredentialId { get; set; }
     public UserCredential UserCredential { get; set; } = null!;
 

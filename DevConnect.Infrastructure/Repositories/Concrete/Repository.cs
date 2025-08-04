@@ -23,6 +23,8 @@ public class Repository<T> : IRepository<T> where T : EntityBase
         return await _context.Set<T>().ToListAsync();
     }
 
+
+
     public async Task<T?> GetByFilter(ISpecification<T> spec)
     {
         return await ApplySpecification(spec).FirstOrDefaultAsync();
