@@ -7,10 +7,10 @@ using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 
 
-public class TokenServise : ITokenService
+public class TokenService : ITokenService
 {
     private readonly IConfiguration _config;
-    public TokenServise(IConfiguration config)
+    public TokenService(IConfiguration config)
     {
         _config = config;
     }

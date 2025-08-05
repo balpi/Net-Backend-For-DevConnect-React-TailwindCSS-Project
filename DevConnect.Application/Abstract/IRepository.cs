@@ -5,6 +5,9 @@ public interface IRepository<T> where T : EntityBase
     Task<IReadOnlyList<T>> GetListAsync(ISpecification<T> spec);
     Task<T> GetByFilter(ISpecification<T> spec);
     Task<int> Count(ISpecification<T> spec);
+    Task<T> AddAsync(T obj);
+    Task<T> RemoveAsync(T obj);
+    Task<T> HardDelete(T obj);
 
 
 

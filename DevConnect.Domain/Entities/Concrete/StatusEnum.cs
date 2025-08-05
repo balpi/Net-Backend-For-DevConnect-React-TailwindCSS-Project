@@ -1,7 +1,7 @@
 public enum StatusEnum
 {
     Pending,
-    Published,
+    Active,
     Rejected,
     removed
 }
