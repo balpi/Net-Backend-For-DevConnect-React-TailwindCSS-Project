@@ -1,6 +1,9 @@
 
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 
+[ApiController]
 
 public class LoginController : ControllerBase
 {
@@ -9,11 +12,14 @@ public class LoginController : ControllerBase
     {
         _auth = auth;
     }
-    [HttpPost("login")]
+
+    [EnableCors("AllowFrontend")]
+    [HttpPost("/login")]
     public async Task<ActionResult<UserLoginResponseDto>> Login([FromBody] UserLoginDto loginUser)
     {
         try
         {
+
             var user = await _auth.LoginAsync(loginUser);
             return Ok(user);
         }
@@ -27,6 +33,18 @@ public class LoginController : ControllerBase
         }
 
 
+    }
+    [EnableCors("AllowFrontend")]
+    [HttpPost("/register")]
+    public async Task<ActionResult<bool>> Register(UserRegisterDto registerDto)
+    {
+
+        if (string.IsNullOrEmpty(registerDto.Email) || string.IsNullOrEmpty(registerDto.Password))
+        {
+            return Ok(false);
+        }
+        System.Console.WriteLine("we are at contorller REGİSTER");
+        return await _auth.RegisterAsync(registerDto);
     }
 
 }

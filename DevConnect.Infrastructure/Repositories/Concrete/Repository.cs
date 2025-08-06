@@ -13,8 +13,13 @@ public class Repository<T> : IRepository<T> where T : EntityBase
     public async Task<T> AddAsync(T obj)
     {
         var entry = await _context.Set<T>().AddAsync(obj);
-        await _context.SaveChangesAsync();
+        var result = await _context.SaveChangesAsync();
+
         return entry.Entity;
+    }
+    public async Task<T?> GetBySpecAsync(ISpecification<T> spec)
+    {
+        return await ApplySpecification(spec).FirstOrDefaultAsync();
     }
 
     public IQueryable<T> ApplySpecification(ISpecification<T> spec)

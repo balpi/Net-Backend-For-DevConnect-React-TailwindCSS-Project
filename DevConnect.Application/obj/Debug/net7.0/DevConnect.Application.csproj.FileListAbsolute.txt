@@ -1,13 +1,11 @@
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.csproj.AssemblyReference.cache
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.GeneratedMSBuildEditorConfig.editorconfig
+D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.csproj.CoreCompileInputs.cache
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\bin\Debug\net7.0\DevConnect.Application.deps.json
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\bin\Debug\net7.0\DevConnect.Application.dll
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\bin\Debug\net7.0\DevConnect.Application.pdb
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\bin\Debug\net7.0\DevConnect.Domain.dll
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\bin\Debug\net7.0\DevConnect.Domain.pdb
-D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.csproj.AssemblyReference.cache
-D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.GeneratedMSBuildEditorConfig.editorconfig
-D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.AssemblyInfoInputs.cache
-D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.AssemblyInfo.cs
-D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.csproj.CoreCompileInputs.cache
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.csproj.CopyComplete
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\DevConnect.Application.dll
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Application\obj\Debug\net7.0\refint\DevConnect.Application.dll

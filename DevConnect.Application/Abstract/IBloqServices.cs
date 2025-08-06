@@ -5,4 +5,5 @@ public interface IBloqService<Bloq>
     Task<int> BloqsCount(FilterDto filter);
     Task<BloqDto> AddBloqAsync(BloqDto bloq);
     Task<BloqDto> RemoveBloq(BloqDto bloq);
+    Task<BloqDto> HardDelete(BloqDto bloq);
 }

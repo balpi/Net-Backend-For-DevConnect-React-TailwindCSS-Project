@@ -40,5 +40,9 @@ public class BaseSpecification<T> : ISpecification<T>
         skip = skipP;
         isPagingEnabled = true;
     }
+    public void AddInclude(Expression<Func<T, object>> expression)
+    {
+        Includes.Add(expression);
+    }
 
 }

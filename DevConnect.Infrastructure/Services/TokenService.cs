@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using System.Text;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
+using Npgsql.Replication;
 
 
 public class TokenService : ITokenService
@@ -17,30 +18,45 @@ public class TokenService : ITokenService
 
     public string createToken(UserCredential user)
     {
-        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:key"]));
-        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
+        var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["JwtSettings:Key"]));
 
-        var claims = new List<Claim>
-        {
-            new Claim(JwtRegisteredClaimNames.Sub,user.Id.ToString()),
-            new Claim(JwtRegisteredClaimNames.Email,user.Email),
-            new Claim("username",user.Profile.FullName),
+        var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512);
+
+        var claims = new List<Claim>(){
+            new Claim(ClaimTypes.Email,user.Email),
+
         };
 
-        foreach (var role in user.UserRoles)
-        {
-            claims.Add(new Claim(ClaimTypes.Role, role.ToString()));
 
-        }
+        if (user.UserRole != null)
+            claims.Add(new Claim(ClaimTypes.Role, user.UserRole.ToString()));
+
 
         var tokenDescriptor = new JwtSecurityToken(
-          issuer: _config["Jwt:Issuer"],
-          audience: _config["Jwt:Audience"],
+          issuer: _config["JwtSettings:Issuer"],
+          audience: _config["JwtSettings:Audience"],
           claims: claims,
+
           expires: DateTime.UtcNow.AddHours(1),
           signingCredentials: creds
       );
+
+
         var tokenHandler = new JwtSecurityTokenHandler();
-        return tokenHandler.WriteToken(tokenDescriptor);
+        System.Console.WriteLine("we came the last: " + tokenDescriptor);
+        Console.WriteLine($"Current UTC: {DateTime.UtcNow}");
+
+        try
+        {
+
+
+            return tokenHandler.WriteToken(tokenDescriptor);
+        }
+        catch (Exception)
+        {
+
+            throw new Exception("Invalid Token");
+        }
+
     }
 }

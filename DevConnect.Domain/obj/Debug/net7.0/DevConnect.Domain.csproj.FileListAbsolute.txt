@@ -2,8 +2,6 @@ D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\bin\Debug\net7.0\Dev
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\bin\Debug\net7.0\DevConnect.Domain.dll
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\bin\Debug\net7.0\DevConnect.Domain.pdb
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\obj\Debug\net7.0\DevConnect.Domain.GeneratedMSBuildEditorConfig.editorconfig
-D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\obj\Debug\net7.0\DevConnect.Domain.AssemblyInfoInputs.cache
-D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\obj\Debug\net7.0\DevConnect.Domain.AssemblyInfo.cs
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\obj\Debug\net7.0\DevConnect.Domain.csproj.CoreCompileInputs.cache
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\obj\Debug\net7.0\DevConnect.Domain.dll
 D:\Portfoyum\DevConnect\DevConnectBackend\DevConnect.Domain\obj\Debug\net7.0\refint\DevConnect.Domain.dll

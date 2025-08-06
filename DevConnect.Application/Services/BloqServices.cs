@@ -42,7 +42,11 @@ public class BloqServices : IBloqService<Bloq>
         return _mapper.Map<IReadOnlyList<BloqDto>>(bloqs);
     }
 
-
+    public async Task<BloqDto> HardDelete(BloqDto bloqDto)
+    {
+        var bloq = _mapper.Map<Bloq>(bloqDto);
+        return _mapper.Map<BloqDto>(await _repository.HardDelete(bloq));
+    }
 
     public async Task<BloqDto> RemoveBloq(BloqDto bloq)
     {

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -9,10 +10,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace DevConnect.Infrastructure.Migrations
 {
-    [DbContext(typeof(AppContext))]
-    partial class AppContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(DevConnectDbContext))]
+    [Migration("20250806220919_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,6 +89,33 @@ namespace DevConnect.Infrastructure.Migrations
                     b.ToTable("Comments");
                 });
 
+            modelBuilder.Entity("Permission", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .HasColumnType("text");
+
+                    b.Property<int?>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Title")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Permissions");
+                });
+
             modelBuilder.Entity("Role", b =>
                 {
                     b.Property<int>("Id")
@@ -94,13 +124,30 @@ namespace DevConnect.Infrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Title")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("RolePermission", b =>
+                {
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("PermissionId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("RoleId", "PermissionId");
+
+                    b.HasIndex("PermissionId");
+
+                    b.ToTable("RolePermission");
                 });
 
             modelBuilder.Entity("UserCredential", b =>
@@ -118,11 +165,27 @@ namespace DevConnect.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<byte[]>("PasswordHash")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("bytea");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("UserProfileId")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("UserProfileId")
+                        .IsUnique();
 
                     b.ToTable("UserCredentials");
                 });
@@ -151,6 +214,9 @@ namespace DevConnect.Infrastructure.Migrations
                     b.Property<string>("Location")
                         .HasColumnType("text");
 
+                    b.Property<int>("Status")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ThemePreference")
                         .HasColumnType("text");
 
@@ -161,9 +227,6 @@ namespace DevConnect.Infrastructure.Migrations
                         .HasColumnType("text");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserCredentialId")
-                        .IsUnique();
 
                     b.ToTable("UserProfiles");
                 });
@@ -176,9 +239,15 @@ namespace DevConnect.Infrastructure.Migrations
                     b.Property<int>("RoleId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("Id")
+                        .HasColumnType("integer");
+
                     b.HasKey("UserCredentialId", "RoleId");
 
                     b.HasIndex("RoleId");
+
+                    b.HasIndex("UserCredentialId")
+                        .IsUnique();
 
                     b.ToTable("UserRoles");
                 });
@@ -213,15 +282,41 @@ namespace DevConnect.Infrastructure.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("UserProfile", b =>
+            modelBuilder.Entity("Permission", b =>
                 {
-                    b.HasOne("UserCredential", "UserCredential")
-                        .WithOne("Profile")
-                        .HasForeignKey("UserProfile", "UserCredentialId")
+                    b.HasOne("Role", null)
+                        .WithMany("Permissions")
+                        .HasForeignKey("RoleId");
+                });
+
+            modelBuilder.Entity("RolePermission", b =>
+                {
+                    b.HasOne("Permission", "Permission")
+                        .WithMany("RolePermissions")
+                        .HasForeignKey("PermissionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("UserCredential");
+                    b.HasOne("Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Permission");
+
+                    b.Navigation("Role");
+                });
+
+            modelBuilder.Entity("UserCredential", b =>
+                {
+                    b.HasOne("UserProfile", "UserProfile")
+                        .WithOne("UserCredential")
+                        .HasForeignKey("UserCredential", "UserProfileId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("UserProfile");
                 });
 
             modelBuilder.Entity("UserRole", b =>
@@ -233,8 +328,8 @@ namespace DevConnect.Infrastructure.Migrations
                         .IsRequired();
 
                     b.HasOne("UserCredential", "UserCredential")
-                        .WithMany("UserRoles")
-                        .HasForeignKey("UserCredentialId")
+                        .WithOne("UserRole")
+                        .HasForeignKey("UserRole", "UserCredentialId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -248,17 +343,22 @@ namespace DevConnect.Infrastructure.Migrations
                     b.Navigation("Comments");
                 });
 
+            modelBuilder.Entity("Permission", b =>
+                {
+                    b.Navigation("RolePermissions");
+                });
+
             modelBuilder.Entity("Role", b =>
                 {
+                    b.Navigation("Permissions");
+
                     b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("UserCredential", b =>
                 {
-                    b.Navigation("Profile")
+                    b.Navigation("UserRole")
                         .IsRequired();
-
-                    b.Navigation("UserRoles");
                 });
 
             modelBuilder.Entity("UserProfile", b =>
@@ -266,6 +366,9 @@ namespace DevConnect.Infrastructure.Migrations
                     b.Navigation("Bloqs");
 
                     b.Navigation("Comments");
+
+                    b.Navigation("UserCredential")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

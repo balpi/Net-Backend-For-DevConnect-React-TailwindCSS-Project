@@ -4,7 +4,7 @@ using System.Text;
 
 public class PasswordHelper
 {
-    public static void CreatePaswordHash(string Password, out byte[] passwordHash, out byte[] passwordSalt)
+    public static void CreatePasswordHash(string Password, out byte[] passwordHash, out byte[] passwordSalt)
     {
         using (var hmac = new HMACSHA512())
         {
@@ -16,9 +16,13 @@ public class PasswordHelper
 
     public static bool VerifyPassword(string Password, byte[] storedHash, byte[] StoredSalt)
     {
+
+
+
         using (var hmac = new HMACSHA512(StoredSalt))
         {
             var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(Password));
+
             return computedHash.SequenceEqual(storedHash);
 
         }

@@ -10,7 +10,7 @@ public class DevConnectDbContext : DbContext
     public DbSet<UserProfile> UserProfiles => Set<UserProfile>();
     public DbSet<UserRole> UserRoles => Set<UserRole>();
     public DbSet<Role> Roles => Set<Role>();
-
+    public DbSet<Permission> Permissions { get; set; }
     public DbSet<Bloq> Bloqs => Set<Bloq>();
     public DbSet<Comment> Comments => Set<Comment>();
 
@@ -20,18 +20,29 @@ public class DevConnectDbContext : DbContext
 
         // UserCredential – UserProfile (One-to-One)
         modelBuilder.Entity<UserCredential>()
-            .HasOne(u => u.Profile)
+            .HasOne(u => u.UserProfile)
             .WithOne(p => p.UserCredential)
             .HasForeignKey<UserProfile>(p => p.UserCredentialId);
+
+        modelBuilder.Entity<UserProfile>()
+        .HasOne(u => u.UserCredential)
+        .WithOne(uc => uc.UserProfile)
+        .HasForeignKey<UserCredential>(p => p.UserProfileId);
 
         // UserCredential – UserRole – Role (Many-to-Many)
         modelBuilder.Entity<UserRole>()
             .HasKey(ur => new { ur.UserCredentialId, ur.RoleId });
 
-        modelBuilder.Entity<UserRole>()
-            .HasOne(ur => ur.UserCredential)
-            .WithMany(u => u.UserRoles)
-            .HasForeignKey(ur => ur.UserCredentialId);
+        modelBuilder.Entity<RolePermission>()
+     .HasKey(rp => new { rp.RoleId, rp.PermissionId });
+
+
+
+        modelBuilder.Entity<RolePermission>()
+            .HasOne(rp => rp.Permission)
+            .WithMany(p => p.RolePermissions)
+            .HasForeignKey(rp => rp.PermissionId);
+
 
         modelBuilder.Entity<UserRole>()
             .HasOne(ur => ur.Role)

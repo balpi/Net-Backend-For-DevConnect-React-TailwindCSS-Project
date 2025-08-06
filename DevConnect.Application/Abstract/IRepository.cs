@@ -8,6 +8,7 @@ public interface IRepository<T> where T : EntityBase
     Task<T> AddAsync(T obj);
     Task<T> RemoveAsync(T obj);
     Task<T> HardDelete(T obj);
+    Task<T?> GetBySpecAsync(ISpecification<T> spec);
 
 
 
